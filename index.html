@@ -7184,97 +7184,12 @@
         showHome();
     </script>
 
-    <!-- Formulaire de demande d'accès (remplace le lien WhatsApp direct) -->
-    <style>
-        .cf-radio-pill{
-            flex:1; display:flex; align-items:center; justify-content:center; gap:6px;
-            border:1.5px solid color-mix(in srgb, var(--navy) 18%, transparent);
-            border-radius:10px; padding:0.7rem 0.5rem; font-weight:700; font-size:0.85rem;
-            cursor:pointer; background:var(--cream); color:var(--ink); text-align:center;
-        }
-        .cf-radio-pill input{ accent-color:var(--brand-gold); margin:0; }
-        .cf-radio-pill:has(input:checked){
-            border-color:var(--brand-gold);
-            box-shadow:0 0 0 2px color-mix(in srgb, var(--brand-gold-light) 35%, transparent);
-        }
-        .cf-submit-btn{
-            width:100%; display:inline-flex; align-items:center; justify-content:center;
-            font-weight:800; font-size:1rem; padding:0.9rem 1.4rem; border-radius:999px; border:none; cursor:pointer;
-            background:var(--brand-gold); color:var(--navy);
-            box-shadow:0 6px 18px rgba(11,26,51,0.18);
-            margin-top:0.4rem;
-        }
-        .cf-submit-btn:hover{ filter:brightness(1.05); }
-        #contact-modal .form-group{ width:100%; text-align:right; margin-bottom:0.9rem; }
-        #contact-modal select.form-input{ appearance:auto; }
-    </style>
-    <div id="contact-modal" style="display:none; position:fixed; inset:0; background:rgba(11,26,51,0.55); z-index:10000; align-items:center; justify-content:center; padding:1rem;">
-        <div class="brand-login-card" style="max-height:92vh; overflow-y:auto; position:relative;">
-            <button type="button" onclick="closeContactModal()" aria-label="إغلاق" style="position:absolute; top:14px; left:14px; background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--ink);">✕</button>
-            <span class="brand-eyebrow" style="color:var(--brand-gold); font-weight:700; display:block;">طلب الولوج</span>
-            <h2 style="color:var(--navy); font-family:'Cairo', sans-serif; margin:0 0 0.3rem; font-size:1.5rem; font-weight:900;">سجّل طلبك الآن</h2>
-            <form onsubmit="submitContactForm(event)" style="width:100%;">
-                <div class="form-group">
-                    <label class="form-label">الاسم الكامل</label>
-                    <input type="text" id="cf-name" class="form-input" placeholder="اكتب اسمك الكامل">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">المدينة</label>
-                    <input type="text" id="cf-city" class="form-input" placeholder="مثال: الرباط">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">وضعك الحالي في التحضير</label>
-                    <select id="cf-status" class="form-input">
-                        <option>أبدأ من الصفر</option>
-                        <option>لدي أساس ولكن أحتاج إلى تنظيم</option>
-                        <option>أراجع بشكل متقدم</option>
-                        <option>اجتزت مباراة من قبل</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">طريقة الأداء المناسبة</label>
-                    <div style="display:flex; gap:8px;">
-                        <label class="cf-radio-pill"><input type="radio" name="cf-payment" value="تحويل بنكي">تحويل بنكي</label>
-                        <label class="cf-radio-pill"><input type="radio" name="cf-payment" value="Wafacash">Wafacash</label>
-                        <label class="cf-radio-pill"><input type="radio" name="cf-payment" value="Cash Plus" checked>Cash Plus</label>
-                    </div>
-                </div>
-                <div class="error-msg" id="cf-error" style="display:none;">يرجى ملء الاسم والمدينة قبل الإرسال</div>
-                <button type="submit" class="cf-submit-btn">اطلب نسختك الآن — 149 درهم</button>
-            </form>
-        </div>
-    </div>
+    <!-- Contact direct WhatsApp pour demander la version complète -->
     <script>
         function openContactModal() {
-            document.getElementById('contact-modal').style.display = 'flex';
-        }
-        function closeContactModal() {
-            document.getElementById('contact-modal').style.display = 'none';
-        }
-        function submitContactForm(e) {
-            e.preventDefault();
-            const name = document.getElementById('cf-name').value.trim();
-            const city = document.getElementById('cf-city').value.trim();
-            const status = document.getElementById('cf-status').value;
-            const paymentEl = document.querySelector('input[name="cf-payment"]:checked');
-            const payment = paymentEl ? paymentEl.value : '';
-
-            if (!name || !city) {
-                document.getElementById('cf-error').style.display = 'block';
-                return;
-            }
-            document.getElementById('cf-error').style.display = 'none';
-
-            const message =
-                'مرحباً، أرغب في طلب النسخة الكاملة لتطبيق اختبارات مباراة التعليم - علوم التربية.' + '\n\n' +
-                'الاسم الكامل: ' + name + '\n' +
-                'المدينة: ' + city + '\n' +
-                'وضعي الحالي في التحضير: ' + status + '\n' +
-                'طريقة الأداء المفضلة: ' + payment;
-
+            const message = 'السلام عليكم، أرغب في طلب الولوج إلى منصة CRMEF CONCOURS والاستفادة من العرض بسعر 100 درهم فقط.';
             const waUrl = 'https://wa.me/212662838967?text=' + encodeURIComponent(message);
-            window.open(waUrl, '_blank');
-            closeContactModal();
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
         }
     </script>
 
